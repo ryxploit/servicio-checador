@@ -1,0 +1,32 @@
+@font-face
+{
+  font-family: 'DS-DIGI';
+  src: url('../fonts/DS-DIGI.TTF');
+}
+
+body
+{
+  background-image: url("../images/img1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card-panel
+{
+  background-color: rgba(5, 8, 3, 0.66);
+  margin-top: 5%;
+
+}
+
+#reloj
+{
+  font-size: 100px;
+  font-family: "DS-DIGI" !important;
+
+}
+
+#saludo
+{
+  font-size: 30px;
+  
+}

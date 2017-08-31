@@ -11,9 +11,9 @@ class PrincipalController extends CI_Controller
     # code...
   $this->load->View('Principal');
   }
+
+  
+
+
 }
-
-
-
-
  ?>

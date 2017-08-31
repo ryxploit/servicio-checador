@@ -29,8 +29,14 @@
       </div>
 
     </div>
-    <p>...</p>
-    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+    <form>
+        <div class="form-group">
+          <label for="email">clave</label>
+          <input type="number" name="clave" class="form-control" id="clave" placeholder="Enter clave">
+        </div>
+        <input type="submit" name="btn-checar" value="checar">
+    </form>
+
   </div>
 </div>
 

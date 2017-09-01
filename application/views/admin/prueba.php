@@ -5,15 +5,13 @@
     <title></title>
   </head>
   <body>
-  <h1> <?php echo  $this->session->userdata('user'); ?> </h1>
 
   <?php
-  echo now('America/Mazatlan');
-  $datestring = 'Year: %Y Month: %m Day: %d - %h:%i %a';
-$time = time();
-echo mdate($datestring, $time);
+  date_default_timezone_set('America/Mazatlan');
+
 
    ?>
+   <?=date('m/d/y g:ia');?>
 
   </body>
 </html>

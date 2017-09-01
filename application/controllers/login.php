@@ -25,8 +25,8 @@ public function check()
 {
   # code...
   $this->load->library('form_validation');
-  $this->form_validation->set_rules('user','User','required');
-  $this->form_validation->set_rules('password','Password','required');
+  $this->form_validation->set_rules('user','Usuario','required');
+  $this->form_validation->set_rules('password','Contraseña','required');
   if ($this->form_validation->run()) {
     # code...
     //true

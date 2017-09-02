@@ -22,5 +22,12 @@ public function fetch()
   return $query;
 }
 
+public function delete_data($id)
+{
+  # code...
+  $this->db->where('id', $id);
+  $this->db->delete('providers');
+}
+
 
 }

@@ -42,56 +42,6 @@
                 Dashboard</span>
             </a>
           </li>
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-            <a class="nav-link" href="#">
-              <i class="fa fa-fw fa-area-chart"></i>
-              <span class="nav-link-text">
-                Charts</span>
-            </a>
-          </li>
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-            <a class="nav-link" href="#">
-              <i class="fa fa-fw fa-table"></i>
-              <span class="nav-link-text">
-                Tables</span>
-            </a>
-          </li>
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-              <i class="fa fa-fw fa-wrench"></i>
-              <span class="nav-link-text">
-                Components</span>
-            </a>
-            <ul class="sidenav-second-level collapse" id="collapseComponents">
-              <li>
-                <a href="static-nav.html">Static Navigation</a>
-              </li>
-              <li>
-                <a href="#">Custom Card Examples</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
-              <i class="fa fa-fw fa-file"></i>
-              <span class="nav-link-text">
-                Example Pages</span>
-            </a>
-            <ul class="sidenav-second-level collapse" id="collapseExamplePages">
-              <li>
-                <a href="login.html">Login Page</a>
-              </li>
-              <li>
-                <a href="register.html">Registration Page</a>
-              </li>
-              <li>
-                <a href="forgot-password.html">Forgot Password Page</a>
-              </li>
-              <li>
-                <a href="blank.html">Blank Page</a>
-              </li>
-            </ul>
-          </li>
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
             <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
               <i class="fa fa-fw fa-sitemap"></i>
@@ -118,13 +68,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-            <a class="nav-link" href="#">
-              <i class="fa fa-fw fa-link"></i>
-              <span class="nav-link-text">
-                Link</span>
-            </a>
-          </li>
+
         </ul>
         <ul class="navbar-nav sidenav-toggler">
           <li class="nav-item">
@@ -176,9 +120,9 @@
               </a>
             </div>
           </div>
-          <div class="collapse" id="collapseExample">
+          <div class="collapse " id="collapseExample">
           <div class="card card-body">
-            <form action="<?php echo base_url('admin/form_validation'); ?>" method="post">
+            <form action="<?php echo base_url('admin/addproviders'); ?>" method="post">
             <div class="form-group">
               <div class="form-row">
                 <div class="col-md-6">
@@ -274,7 +218,7 @@
                         <td><?php echo $row->surnames; ?></td>
                         <td><?php echo $row->school; ?></td>
                         <td>61</td>
-                        <td>2011/04/25</td>
+                        <td><a href="#" class="btn btn-outline-danger delete" id="<?php echo $row->id; ?>"><i class="fa fa-times" aria-hidden="true"></i></a></td>
                       </tr>
                 <?php    }
                   } else {
@@ -304,7 +248,7 @@
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
-          <small>Copyright &copy; carlos leon 2017</small>
+          <small>Copyright &copy;  carlos leon <i class="fa fa-heart text-danger" aria-hidden="true"></i> 2017</small>
         </div>
       </div>
     </footer>
@@ -329,7 +273,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href=" <?php echo base_url('admin/logout'); ?>">Cerrar sesión</a>
+            <a class="btn btn-primary" href=" <?php echo base_url('login/logout'); ?>">Cerrar sesión</a>
           </div>
         </div>
       </div>
@@ -345,12 +289,24 @@
 
     <!-- Plugin JavaScript -->
     <script src="<?php echo base_url('assets/vendor/jquery-easing/jquery.easing.min.js'); ?> " charset="utf-8"></script>
-    <script src="<?php echo base_url('assets/vendor/chart.js/Chart.min.js'); ?> " charset="utf-8"></script>
     <script src="<?php echo base_url('assets/vendor/datatables/jquery.dataTables.js'); ?> " charset="utf-8"></script>
     <script src="<?php echo base_url('assets/vendor/datatables/dataTables.bootstrap4.js'); ?> " charset="utf-8"></script>
 
     <!-- Custom scripts for this template -->
     <script src="<?php echo base_url('assets/js/sb-admin.min.js'); ?> " charset="utf-8"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('.delete').click(function () {
+          var id = $(this).attr('id');
+          if (confirm('De verdad desea eliminar al prestador?')) {
+            window.location='<?php echo base_url("admin/delete/") ?>' + id;
+          }else {
+            return false;
+          }
+        });
+      });
+    </script>
 
   </body>
 

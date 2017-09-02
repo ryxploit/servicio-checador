@@ -26,15 +26,7 @@ class Admin extends CI_Controller{
 
   }
 
-  public function logout()
-  {
-    # code...
-    $this->session->unset_userdata('user');
-    $this->session->sess_destroy();
-      redirect(base_url('login'));
-  }
-
-  public function form_validation()
+  public function addproviders()
   {
     # code...
     $this->form_validation->set_rules('name', 'Nombre', 'required');
@@ -60,15 +52,28 @@ class Admin extends CI_Controller{
     }
   }
 
-  public function addproviders()
-  {
-    # code...
-  }
-
 public function prueba()
 {
   # code...
-  $this->load->view('admin/prueba');
+  $this->load->model('madmin');
+  $data['fetch'] = $this->madmin->fetch();
+  $this->load->view('admin/prueba',$data);
+}
+
+public function delete()
+{
+  # code...
+  $id = $this->uri->segment(3);
+  $this->load->model('madmin');
+  $this->madmin->delete_data($id);
+   redirect(base_url('admin'));
+}
+public function provider()
+{
+  # code...
+  $this->load->view('admin/layout/header');
+  $this->load->view('admin/layout/footer');
+
 }
 //consulta
   //SELECT * FROM `providers` p JOIN `times` t ON p.id = t.id

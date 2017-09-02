@@ -17,7 +17,7 @@ public  function index()
   {
     # code...
   $data['title']  = 'Login';
-  $data['head']  = 'Login checador uas';
+  $data['head']  = 'Login Checador <i class="fa fa-heart text-danger" aria-hidden="true"></i>';
   $this->load->View('validacion/vlogin',$data);
   }
 
@@ -54,7 +54,13 @@ public function check()
   }
 }
 
-
+public function logout()
+{
+  # code...
+  $this->session->unset_userdata('user');
+  $this->session->sess_destroy();
+    redirect(base_url('login'));
+}
 
 
 

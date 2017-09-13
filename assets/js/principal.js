@@ -21,10 +21,13 @@ seconds="0"+seconds
 
 $("#reloj").html(hours+":"+minutes+":"+seconds+" "+dn);
 
-$("#saludo").html(saludo);
+$("#saludo").html(saludo + '  '+ '<i class="fa fa-sun-o" aria-hidden="true"></i>');
 
 var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre")
 var fecha = new Date;
+
+
+$(".alert").alert();
 
 
 $("#fecha").html(fecha.getDate() + "/" + meses[fecha.getMonth() ] + "/" + fecha.getFullYear());

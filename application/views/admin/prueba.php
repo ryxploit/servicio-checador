@@ -25,15 +25,15 @@
      <?php }} ?>
      </select>
 
-<input type="datetime-local" name="" value="">
+
 
      <?php
      date_default_timezone_set('America/Mazatlan');
 
- //echo date('m/d/y g:ia');
+ //echo date("Y-m-d H:i:s");
 
-$strStart = '2013-06-19 18:00';
-$strEnd   = '2013-06-19 21:00';
+$strStart = $query;
+$strEnd   = '2017-09-06 17:20';
 
 $dteStart = new DateTime($strStart);
 $dteEnd   = new DateTime($strEnd);
@@ -43,6 +43,14 @@ $dteDiff  = $dteStart->diff($dteEnd);
 print $dteDiff->format("%H:%I:%S");
 
 
+
+if ($query->num_rows() == 1) {
+  # code...
+$row =  $query->row();
+  $time = $row->time;
+
+  echo  $time;
+}
 
       ?>
 

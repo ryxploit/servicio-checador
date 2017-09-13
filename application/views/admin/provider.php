@@ -28,7 +28,7 @@
   <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top " id="mainNav">
       <a class="navbar-brand" href="#"> <?php echo $title; ?> </a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -37,9 +37,9 @@
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
           <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Dashboard">
             <a class="nav-link" href="#">
-              <i class="fa fa-fw fa-dashboard"></i>
+              <i class="fa fa-fw fa-user"></i>
               <span class="nav-link-text">
-                Dashboard</span>
+                Prestador</span>
             </a>
           </li>
 
@@ -68,9 +68,9 @@
         <!-- Breadcrumbs -->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
+            <a href="<?php echo base_url('admin'); ?>">Dashboard</a>
           </li>
-          <li class="breadcrumb-item active">My Dashboard</li>
+          <li class="breadcrumb-item active">prestador</li>
         </ol>
 
         <!-- Icon Cards -->
@@ -87,7 +87,7 @@
                 </div>
               </div>
               <a  class="card-footer text-white clearfix small z-1" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                <span class="float-left">Agregar</span>
+                <span class="float-left">Actualizar</span>
                 <span class="float-right">
                   <i class="fa fa-angle-right"></i>
                 </span>
@@ -96,28 +96,32 @@
           </div>
           <div class="collapse " id="collapseExample">
           <div class="card card-body">
-            <form action="<?php echo base_url('admin/addproviders'); ?>" method="post">
+            <?php
+            $row = $fetch->row_array();
+             ?>
+            <form action="<?php echo base_url('admin/updateProviders'); ?>" method="post">
+            <input type="hidden" name="id" value="<?Php echo $row['idp']; ?>">
             <div class="form-group">
               <div class="form-row">
                 <div class="col-md-6">
                   <label for="name">Nombre</label>
-                  <input type="text" name="name" class="form-control" id="name" aria-describedby="name" placeholder="nombre del prestador">
+                  <input type="text" name="name" value="<?Php echo $row['name']; ?>" class="form-control" id="name" aria-describedby="name" placeholder="nombre del prestador">
                   <span class="text-danger"> <?php echo form_error('name'); ?> </span>
                 </div>
                 <div class="col-md-6">
                   <label for="surnames">Apellidos</label>
-                  <input type="text" name="surnames" class="form-control" id="surnames" aria-describedby="surnames" placeholder="apellido paterno y materno">
+                  <input type="text" name="surnames" value="<?Php echo $row['surnames']; ?>" class="form-control" id="surnames" aria-describedby="surnames" placeholder="apellido paterno y materno">
                   <span class="text-danger"> <?php echo form_error('surnames'); ?> </span>
                 </div>
               </div>
             </div>
             <div class="form-group">
               <label for="school">Escuela o facultad</label>
-              <input type="text" name="school" class="form-control" id="school" aria-describedby="school" placeholder="escuela o facultad del prestador">
+              <input type="text" name="school" value="<?Php echo $row['school']; ?>" class="form-control" id="school" aria-describedby="school" placeholder="escuela o facultad del prestador">
               <span class="text-danger"> <?php echo form_error('school'); ?> </span>
             </div>
 
-            <button type="submit" name="button" class="btn btn-primary btn-block">Registrar</button>
+            <button type="submit" name="button" class="btn btn-primary btn-block">Actualizar</button>
           </form>
       </div>
         </div>
@@ -127,8 +131,12 @@
                 <div class="card-body-icon">
                   <i class="fa fa-fw fa-support"></i>
                 </div>
-                <div class="mr-5" id="tproviders">
-
+                <div class="mr-5">
+                  <?php
+                  $row = $total->row();
+                  echo "total de horas ";
+                  echo  $row->total;
+                   ?>
                 </div>
               </div>
             </div>
@@ -138,7 +146,7 @@
         <div class="card mb-3">
           <div class="card-header">
             <i class="fa fa-table"></i>
-            Prestadores del servicio social
+            Prestador entradas y salidas
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -146,40 +154,37 @@
                 <thead>
                   <tr>
                     <th>Nombre</th>
-                    <th>Apellidos</th>
-                    <th>Escuela</th>
-                    <th>Acciones</th>
+                    <th>Entrada</th>
+                    <th>Salida</th>
+                    <th>Horas</th>
                   </tr>
                 </thead>
                 <tfoot>
                   <tr>
                     <th>Nombre</th>
-                    <th>Apellidos</th>
-                    <th>Escuela</th>
-                    <th>Acciones</th>
+                    <th>Entrada</th>
+                    <th>salida</th>
+                    <th>Horas</th>
                   </tr>
                 </tfoot>
                 <tbody>
                   <?php
-                  if ($fetch->num_rows() > 0) {
+                  if ($provider_data->num_rows() > 0) {
                     # code...
-                    foreach ($fetch->result() as $row) {
+                    foreach ($provider_data->result() as $row) {
                       # code...
                        ?>
                       <tr>
                         <td> <?php echo $row->name; ?> </td>
-                        <td><?php echo $row->surnames; ?></td>
-                        <td><?php echo $row->school; ?></td>
-                        <td>
-                          <a href="#" class="btn btn-outline-danger delete" id="<?php echo $row->idp; ?>"><i class="fa fa-times" aria-hidden="true"></i></a>
-                          <a href="<?php echo base_url();?>admin/provider/<?php echo $row->idp;?>" class="btn btn-outline-primary " id=""><i class="fa fa-eye" aria-hidden="true"></i></a>
-                        </td>
+                        <td><?php echo $row->time_start; ?></td>
+                        <td><?php echo $row->time_end; ?></td>
+                        <td><?php echo $row->th; ?></td>
                       </tr>
                 <?php    }
                   } else {
                     # code...
                     echo "<tr>";
-                    echo "<td><h1> no hay ningun prestador </h1></td>";
+                    echo "<td><h1> no hay checadas </h1></td>";
                     echo "</tr>";
                   }
 
@@ -250,22 +255,7 @@
     <!-- Custom scripts for this template -->
     <script src="<?php echo base_url('assets/js/sb-admin.min.js'); ?> " charset="utf-8"></script>
 
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $('.delete').click(function () {
-          var id = $(this).attr('id');
-          if (confirm('De verdad desea eliminar al prestador?')) {
-            window.location='<?php echo base_url("admin/delete/") ?>' + id;
-          }else {
-            return false;
-          }
-        });
-      });
 
-      var rowCount = $('#dataTable >tbody >tr').length;
-      $('#tproviders').html(rowCount+ ' '+ 'Prestadores');
-
-    </script>
 
   </body>
 

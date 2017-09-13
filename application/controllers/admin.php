@@ -18,7 +18,7 @@ class Admin extends CI_Controller{
       $this->load->model('madmin');
       $data['fetch'] = $this->madmin->fetch();
       $data['title'] = 'Admin Checador';
-        $this->load->view('admin/dashboard', $data);
+      $this->load->view('admin/dashboard', $data);
     } else {
       # code...
       redirect(base_url('login'));
@@ -32,7 +32,7 @@ class Admin extends CI_Controller{
     $this->form_validation->set_rules('name', 'Nombre', 'required');
     $this->form_validation->set_rules('surnames', 'Apellidos', 'required');
     $this->form_validation->set_rules('school', 'Escuela o facultad', 'required');
-    $this->form_validation->set_rules('keygen', 'Clave', 'required');
+
     if ($this->form_validation->run()) {
       # code...true
       $this->load->model('madmin');
@@ -41,7 +41,6 @@ class Admin extends CI_Controller{
         'name' => $this->input->post('name') ,
         'surnames' => $this->input->post('surnames') ,
         'school' => $this->input->post('school') ,
-        'keygen' => $this->input->post('keygen') ,
         'registration_date' => date('d/m/y ')
       );
       $this->madmin->insert($data);
@@ -68,15 +67,46 @@ public function delete()
   $this->madmin->delete_data($id);
    redirect(base_url('admin'));
 }
+
 public function provider()
 {
   # code...
-  $this->load->view('admin/layout/header');
-  $this->load->view('admin/layout/footer');
+  $id = $this->uri->segment(3);
+  $this->load->model('madmin');
 
+  $data = array(
+    'title' => 'prestador',
+    'provider_data' => $this->madmin->data_provider($id),
+    'fetch' => $this->madmin->fetchupdate($id),
+    'total' => $this->madmin->total_hours($id)
+   );
+  $this->load->view('admin/provider', $data);
 }
-//consulta
-  //SELECT * FROM `providers` p JOIN `times` t ON p.id = t.id
+
+public function updateProviders()
+{
+  # code...
+  $this->form_validation->set_rules('name', 'Nombre', 'required');
+  $this->form_validation->set_rules('surnames', 'Apellidos', 'required');
+  $this->form_validation->set_rules('school', 'Escuela o facultad', 'required');
+
+  if ($this->form_validation->run()) {
+    # code...true
+    $id = $this->input->post('id');
+    $this->load->model('madmin');
+    $data = array(
+      'name' => $this->input->post('name') ,
+      'surnames' => $this->input->post('surnames') ,
+      'school' => $this->input->post('school')
+    );
+    $this->madmin->update($data,$id);
+    redirect (base_url('admin'));
+  }else {
+    # code...
+    $this->index();
+  }
+}
+
 
 
 }

@@ -3,30 +3,27 @@
   font-family: 'DS-DIGI';
   src: url('../fonts/DS-DIGI.TTF');
 }
-
-body
-{
-  background-image: url("../images/img1.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+body{
+  background-color: #448aff !important;
 }
-
-.card-panel
-{
-  background-color: rgba(5, 8, 3, 0.66);
-  margin-top: 5%;
-
+.navbar-brand{
+  color: #FFF;
 }
-
+.fa-sun-o{
+  color: rgb(235, 246, 21);
+}
 #reloj
 {
   font-size: 100px;
   font-family: "DS-DIGI" !important;
-
+  color: #FFF;
 }
-
 #saludo
 {
   font-size: 30px;
-  
+  color: #FFF;
+}
+#fecha{
+  font-size: 20px;
+  color: #FFF;
 }

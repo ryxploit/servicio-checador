@@ -10,6 +10,7 @@ class Login extends CI_Controller
 public function __construct()
 {
   parent::__construct();
+  $this->load->library('encryption');
 
 }
 
@@ -25,13 +26,14 @@ public function check()
 {
   # code...
   $this->load->library('form_validation');
+  $this->load->library('encryption');
   $this->form_validation->set_rules('user','Usuario','required');
   $this->form_validation->set_rules('password','Contraseña','required');
   if ($this->form_validation->run()) {
     # code...
     //true
     $user = $this->input->post('user');
-    $password = $this->input->post('password');
+    $password = sha1($this->input->post('password'));
     //model funcion
     $this->load->model('mlogin');
     if ($this->mlogin->validation($user,$password)) {

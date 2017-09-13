@@ -9,7 +9,7 @@
     <!-- Custom fonts for this template -->
     <link rel="stylesheet" href=" <?php echo base_url('assets/vendor/font-awesome/css/font-awesome.min.css');?>">
     <link rel="stylesheet" href=" <?php echo base_url('assets/css/principal.css');?>">
-  </head>
+  </head> 
   <body>
 
     <nav class="navbar navbar-primary">

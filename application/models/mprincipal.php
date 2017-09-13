@@ -45,13 +45,13 @@ class Mprincipal extends CI_Model{
     return 1;
   } elseif ($query) {
       # checa salida...
+        $this->db->where('DATE(time_start)',date("Y-m-d"));
         $this->db->where('id_providers',$data_end['id_providers']);
         $this->db->update('times', $data_end);
 
           # total de horas que hizo en el dia...
-          $where = "DATE(time_start) = DATE(NOW())";
+          $this->db->where('DATE(time_start)',date("Y-m-d"));
           $this->db->where('id_providers',$data_end['id_providers']);
-          $this->db->where( $where);
           $this->db->update('times',$diff);
 
       return 2;

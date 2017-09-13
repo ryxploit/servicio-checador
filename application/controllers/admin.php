@@ -7,7 +7,7 @@ class Admin extends CI_Controller{
   {
     parent::__construct();
     //Codeigniter : Write Less Do More
-    $this->load->helper('date');
+    $this->load->helper('date'); 
   }
 
   function index()

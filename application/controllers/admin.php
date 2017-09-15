@@ -7,7 +7,7 @@ class Admin extends CI_Controller{
   {
     parent::__construct();
     //Codeigniter : Write Less Do More
-    $this->load->helper('date'); 
+    $this->load->helper('date');
   }
 
   function index()
@@ -32,6 +32,7 @@ class Admin extends CI_Controller{
     $this->form_validation->set_rules('name', 'Nombre', 'required');
     $this->form_validation->set_rules('surnames', 'Apellidos', 'required');
     $this->form_validation->set_rules('school', 'Escuela o facultad', 'required');
+    $this->form_validation->set_rules('hours', 'horas', 'required');
 
     if ($this->form_validation->run()) {
       # code...true
@@ -41,7 +42,8 @@ class Admin extends CI_Controller{
         'name' => $this->input->post('name') ,
         'surnames' => $this->input->post('surnames') ,
         'school' => $this->input->post('school') ,
-        'registration_date' => date('d/m/y ')
+        'registration_date' => date('d/m/y '),
+        'hours' => $this->input->post('hours')
       );
       $this->madmin->insert($data);
       redirect (base_url('admin'));
@@ -50,14 +52,6 @@ class Admin extends CI_Controller{
       $this->index();
     }
   }
-
-public function prueba()
-{
-  # code...
-  $this->load->model('madmin');
-  $data['fetch'] = $this->madmin->fetch();
-  $this->load->view('admin/prueba',$data);
-}
 
 public function delete()
 {
@@ -89,6 +83,7 @@ public function updateProviders()
   $this->form_validation->set_rules('name', 'Nombre', 'required');
   $this->form_validation->set_rules('surnames', 'Apellidos', 'required');
   $this->form_validation->set_rules('school', 'Escuela o facultad', 'required');
+    $this->form_validation->set_rules('hours', 'Horas', 'required');
 
   if ($this->form_validation->run()) {
     # code...true
@@ -97,7 +92,8 @@ public function updateProviders()
     $data = array(
       'name' => $this->input->post('name') ,
       'surnames' => $this->input->post('surnames') ,
-      'school' => $this->input->post('school')
+      'school' => $this->input->post('school'),
+      'hours' => $this->input->post('hours')
     );
     $this->madmin->update($data,$id);
     redirect (base_url('admin'));

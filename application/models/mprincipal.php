@@ -53,8 +53,35 @@ class Mprincipal extends CI_Model{
           $this->db->where('DATE(time_start)',date("Y-m-d"));
           $this->db->where('id_providers',$data_end['id_providers']);
           $this->db->update('times',$diff);
+          #tiempo restante
+          $queryrestante =  $this->db->query('SELECT TIME_TO_SEC(hours) - TIME_TO_SEC(th) AS faltante FROM `providers` p JOIN `times` t ON p.idp = t.id_providers WHERE DATE(time_start) = DATE(NOW()) AND t.id_providers='.$data_end['id_providers']);
 
-      return 2;
+          $rest = $queryrestante->row();
+          $restante = $rest->faltante;
+
+          function conversor_segundos($restante) {
+            $horas = floor($restante/3600);
+            $minutos = floor(($restante-($horas*3600))/60);
+            $segundos = $restante-($horas*3600)-($minutos*60);
+            $resultado = $horas.':'.$minutos.':'.$segundos;
+            return $resultado;
+
+           }
+
+         $result  = conversor_segundos($restante);
+
+         $hours = array('hours' => $result );
+
+        
+         $this->db->where('idp',$data_end['id_providers']);
+         $this->db->update('providers',$hours);
+
+         $return = array('th' => $th,
+                          'restante' => $result,
+                          'dos' => 2
+                        );
+
+      return $return;
     } else {
       # code...
 

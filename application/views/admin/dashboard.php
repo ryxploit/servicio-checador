@@ -116,6 +116,15 @@
               <input type="text" name="school" class="form-control" id="school" aria-describedby="school" placeholder="escuela o facultad del prestador">
               <span class="text-danger"> <?php echo form_error('school'); ?> </span>
             </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label for="name">Horas a concluir</label>
+                  <input type="text" name="hours" value="480:00:00" class="form-control"  id="hours" aria-describedby="hours" placeholder="">
+                  <span class="text-danger"> <?php echo form_error('hours'); ?> </span>
+                </div>
+            </div>
+          </div>
 
             <button type="submit" name="button" class="btn btn-primary btn-block">Registrar</button>
           </form>
@@ -148,6 +157,7 @@
                     <th>Nombre</th>
                     <th>Apellidos</th>
                     <th>Escuela</th>
+                    <th>Horas</th>
                     <th>Acciones</th>
                   </tr>
                 </thead>
@@ -156,6 +166,7 @@
                     <th>Nombre</th>
                     <th>Apellidos</th>
                     <th>Escuela</th>
+                    <th>Horas</th>
                     <th>Acciones</th>
                   </tr>
                 </tfoot>
@@ -170,6 +181,7 @@
                         <td> <?php echo $row->name; ?> </td>
                         <td><?php echo $row->surnames; ?></td>
                         <td><?php echo $row->school; ?></td>
+                        <td><?php echo $row->hours; ?></td>
                         <td>
                           <a href="#" class="btn btn-outline-danger delete" id="<?php echo $row->idp; ?>"><i class="fa fa-times" aria-hidden="true"></i></a>
                           <a href="<?php echo base_url();?>admin/provider/<?php echo $row->idp;?>" class="btn btn-outline-primary " id=""><i class="fa fa-eye" aria-hidden="true"></i></a>

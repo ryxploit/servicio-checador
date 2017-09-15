@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-09-2017 a las 00:23:39
+-- Tiempo de generación: 15-09-2017 a las 06:47:36
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 7.1.7
 
@@ -33,7 +33,8 @@ CREATE TABLE `providers` (
   `name` varchar(80) NOT NULL,
   `surnames` varchar(100) NOT NULL,
   `school` varchar(80) NOT NULL,
-  `registration_date` varchar(50) NOT NULL
+  `registration_date` varchar(50) NOT NULL,
+  `hours` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

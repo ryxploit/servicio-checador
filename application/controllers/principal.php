@@ -45,11 +45,11 @@ class Principal extends CI_Controller
 
     if ($comparacion == 1) {
       # code...
-      $this->session->set_flashdata('msj', '<div class="alert alert-danger col-md-5 text-center" role="alert">Checaste entrada alas'.'   '.$date.'</div');
+      $this->session->set_flashdata('msj', '<div class="alert alert-danger col-md-5 text-center" role="alert">Checaste entrada alas <strong>'.'   '.$date.'</strong></div');
       redirect (base_url());
-    } elseif ($comparacion == 2) {
+    } elseif ($comparacion['dos'] == 2) {
       # code...
-      $this->session->set_flashdata('msj', '<div class="alert alert-danger col-md-5 text-center" role="alert">Checaste salida alas'.'   '.$date.'</div');
+      $this->session->set_flashdata('msj', '<div class="alert alert-danger col-md-5 text-center" role="alert">Checaste salida alas <strong>'.'   '.$date.' </strong>  '.'Te faltan <strong>  '.$comparacion['restante'].'</strong></div');
       redirect (base_url());
     } else {
       # code...

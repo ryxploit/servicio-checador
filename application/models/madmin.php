@@ -11,7 +11,7 @@ class Madmin extends CI_Model{
 public function insert($data)
 {
   # code...
-  $this->db->insert('providers', $data);
+  $this->db->insert('providers', $data); 
 
 }
 

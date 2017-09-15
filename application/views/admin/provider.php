@@ -120,6 +120,15 @@
               <input type="text" name="school" value="<?Php echo $row['school']; ?>" class="form-control" id="school" aria-describedby="school" placeholder="escuela o facultad del prestador">
               <span class="text-danger"> <?php echo form_error('school'); ?> </span>
             </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label for="name">Horas a concluir</label>
+                  <input type="text" name="hours"  value="<?Php echo $row['hours']; ?>" class="form-control"  id="hours" aria-describedby="hours" placeholder="">
+                  <span class="text-danger"> <?php echo form_error('hours'); ?> </span>
+                </div>
+            </div>
+          </div>
 
             <button type="submit" name="button" class="btn btn-primary btn-block">Actualizar</button>
           </form>
@@ -134,8 +143,10 @@
                 <div class="mr-5">
                   <?php
                   $row = $total->row();
-                  echo "total de horas ";
-                  echo  $row->total;
+                    # code...
+                    echo "total de horas ";
+                    echo  $row->total;
+
                    ?>
                 </div>
               </div>

@@ -51,6 +51,10 @@ class Principal extends CI_Controller
       # code...
       $this->session->set_flashdata('msj', '<div class="alert alert-danger col-md-5 text-center" role="alert">Checaste salida alas <strong>'.'   '.$date.' </strong>  '.'Te faltan <strong>  '.$comparacion['restante'].'</strong></div');
       redirect (base_url());
+    } elseif ($comparacion == 3) {
+      # code...
+      $this->session->set_flashdata('msj', '<div class="alert alert-danger col-md-5 text-center" role="alert">Ya Checaste salida no puedes checar dos veces </div');
+      redirect (base_url());
     } else {
       # code...
     }

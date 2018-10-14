@@ -11,7 +11,7 @@ class Madmin extends CI_Model{
 public function insert($data)
 {
   # code...
-  $this->db->insert('providers', $data); 
+  $this->db->insert('providers', $data);
 
 }
 
@@ -58,7 +58,14 @@ public function fetchupdate($id)
   return $query;
 }
 
+public function check()
+{
+  // code...
+  $query = $this->db->query('SELECT p.name,p.idp, t.time_start, t.time_end FROM providers p CROSS JOIN times t WHERE CURDATE() = DATE( time_start)
+');
 
+  return $query;
+}
 
 
 }

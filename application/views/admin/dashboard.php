@@ -215,7 +215,7 @@
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
-          <small>Copyright &copy;  carlos leon <i class="fa fa-heart text-danger" aria-hidden="true"></i> 2017</small>
+          <small>Copyright &copy;  carlos leon <i class="fa fa-heart text-danger" aria-hidden="true"></i> 2018</small>
         </div>
       </div>
     </footer>

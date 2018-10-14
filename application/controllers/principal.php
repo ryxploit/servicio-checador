@@ -11,6 +11,7 @@ class Principal extends CI_Controller
     # code...
     $this->load->model('madmin');
     $data['fetch'] = $this->madmin->fetch();
+    $data['check'] = $this->madmin->check();
     $this->load->View('vPrincipal', $data);
   }
 

@@ -61,7 +61,7 @@ public function logout()
   # code...
   $this->session->unset_userdata('user');
   $this->session->sess_destroy();
-    redirect(base_url('login'));
+    redirect(base_url());
 }
 
 

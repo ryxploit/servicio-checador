@@ -77,7 +77,7 @@
 
                        ?>
                       <tr>
-                        <td> <?php echo $row->idp; ?> </td>
+                        <td> <?php echo $row->id_providers; ?> </td>
                         <td> <?php echo $row->name; ?> </td>
                         <td> <?php echo $row->time_start; ?> </td>
                         <td> <?php echo $row->time_end; ?> </td>

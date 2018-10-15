@@ -61,7 +61,7 @@ public function fetchupdate($id)
 public function check()
 {
   // code...
-  $query = $this->db->query('SELECT p.name,p.idp, t.time_start, t.time_end FROM providers p CROSS JOIN times t WHERE CURDATE() = DATE( time_start)
+  $query = $this->db->query('SELECT times.time_start,times.id_providers, providers.name,times.time_end FROM times INNER JOIN providers ON times.id_providers=providers.idp WHERE CURDATE() = DATE( time_start)
 ');
 
   return $query;
